@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MySQL - Flask: Full Friends
+    </title>
+</head>
+
+<style>
+    body {
+        width: 90%;
+        margin: auto;
+        height: 100%;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    #friendsbox {
+        width: 400px;
+        height: auto;
+    }
+
+    #formleft,
+    #formright {
+        display: inline-block;
+        width: 49%;
+    }
+
+    input,
+    select {
+        width: 100%;
+        margin: 5px;
+    }
+
+    #flashmessages {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    table {
+        padding: 5px;
+    }
+
+    th,
+    td {
+        text-align: left;
+        width: auto;
+        padding: 3px 10px 3px 3px;
+    }
+</style>
+
+<body>
+    <h1>Friends:</h1>
+    <div id='friendsbox'>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Friend Since</th>
+                <th></th>
+            </tr>
+
+            {% for friend in friendslist %}
+            <tr>
+                <td>{{ friend['name'] }}</td>
+                <td>{{ friend['age'] }}</td>
+                <td>{{ friend['created_at'] }}</td>
+                <td>{{ friend['created_year'] }}</td>
+
+            </tr>
+            {% endfor %}
+
+
+        </table>
+    </div>
+    <div>
+        <h1>Add a Friend:</h1>
+        <form action="/addfriend" method="post">
+            <div id="formleft">
+                Friend's Name:
+            </div>
+            <div id="formright">
+                <input type="text" name="name">
+            </div>
+
+            <div id="formleft">
+                Friend's Age:
+            </div>
+            <div id="formright">
+                <input type="text" name="age">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
